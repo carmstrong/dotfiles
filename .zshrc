@@ -6,7 +6,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
-export DEIS_REGISTRY=${DOCKER_HOST}:5000
+export DEIS_REGISTRY=`boot2docker ip 2>/dev/null`:5000
 export FLEETCTL_TUNNEL=172.17.8.100
 
 export JAVA_HOME=$(/usr/libexec/java_home)
