@@ -1,74 +1,29 @@
-# Path to your oh-my-zsh configuration.
 ZSH=/Users/carmstrong/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often to auto-update? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment following line if you want to the command execution time stamp shown 
-# in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby docker)
-
+HIST_STAMPS="mm/dd/yyyy"
+plugins=(aws docker git git-remote-branch golang ruby vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export EC2_HOME=/usr/local/ec2/ec2-api-tools-1.6.12.2
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$EC2_HOME/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+export DEIS_REGISTRY=${DOCKER_HOST}:5000
+export FLEETCTL_TUNNEL=172.17.8.100
 
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export JAVA_HOME=$(/usr/libexec/java_home)
+export GOPATH=/Users/carmstrong/gocode
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/go/bin:$GOPATH/bin"
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# Deis
+export DEIS_TEST_KEY=~/.ssh/deis
+export DEIS_TEST_SSH_KEY=$DEIS_TEST_KEY
+export DEIS_TEST_HOSTNAME=deis.gingerweather.com
+export DEIS_TEST_HOSTS=172.31.25.61
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+export DEIS_NUM_INSTANCES=3
 
 eval "$(rbenv init -)"
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+alias fctl='fleetctl --strict-host-key-checking=false'
+export FLEETCTL_TUNNEL=172.17.8.100
 
-source ~/.aws
+export DEISCTL_UNITS=/Users/carmstrong/gocode/src/github.com/deis/deisctl
