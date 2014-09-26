@@ -25,5 +25,5 @@ eval "$(rbenv init -)"
 
 alias fctl='fleetctl --strict-host-key-checking=false'
 export FLEETCTL_TUNNEL=172.17.8.100
-
+export DEISCTL_TUNNEL=172.17.8.100
 export DEISCTL_UNITS=/Users/carmstrong/gocode/src/github.com/deis/deisctl
